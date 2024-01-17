@@ -1,0 +1,15 @@
+.meal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: al 0.3s ease-in-out;
+    color: #ddd6cb;
+    background: linear-gradient(90deg, #f9572a, #ffc905);
+}
+.headerText{
+    padding:0.5rem 1rem 0 1rem;
+}
