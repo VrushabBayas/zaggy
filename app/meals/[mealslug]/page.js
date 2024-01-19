@@ -1,10 +1,35 @@
+/**
+ * Renders the details of a meal.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.params - The parameters passed to the component.
+ * @param {string} props.params.mealslug - The slug of the meal.
+ * @returns {JSX.Element} The rendered meal details.
+ */
 import React from "react";
 
 import classes from "./page.module.css";
 import Image from "next/image";
 import { getMeal } from "@/lib/meals";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 
+/**
+ * Generates metadata for the meal details page.
+ *
+ * @param {Object} params - The parameters passed to the component.
+ * @param {string} params.mealslug - The slug of the meal.
+ * @returns {Object} The generated metadata.
+ */
+export async function generateMetadata({ params: { mealslug: slug } }) {
+  const meal = getMeal(slug);
+  if (!meal) {
+    return notFound();
+  }
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
 export default function MealDetails({ params }) {
   const slug = params.mealslug;
   const meal = getMeal(slug);
